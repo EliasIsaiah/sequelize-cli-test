@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const routes = require('./controllers');
-
+require("dotenv").config();
 // app.use(express.static(path.join(__dirname, 'app')));
 
 // Sets up the Express App
@@ -9,6 +9,7 @@ const routes = require('./controllers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const db = require("./models");
 
 // Set Handlebars as the default templating engine.
 
