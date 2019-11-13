@@ -2,7 +2,11 @@
   "development": {
     "username": "root",
     "password": "root",
+<<<<<<< HEAD
     "database": "database_development",
+=======
+    "database": "Foodies_Development",
+>>>>>>> 79d0ba06ce705bfde0a408345e1e07cbe33b13c6
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
