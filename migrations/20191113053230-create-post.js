@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('postTwos', {
+    return queryInterface.createTable('posts', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,7 +14,16 @@ module.exports = {
       body: {
         type: Sequelize.STRING
       },
-      picture: {
+      image: {
+        type: Sequelize.STRING
+      },
+      restaurant: {
+        type: Sequelize.STRING
+      },
+      rating: {
+        type: Sequelize.INTEGER
+      },
+      food: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -28,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('postTwos');
+    return queryInterface.dropTable('posts');
   }
 };
