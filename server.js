@@ -1,6 +1,4 @@
 const express = require("express");
-const path = require("path");
-const routes = require('./controllers');
 require("dotenv").config();
 // app.use(express.static(path.join(__dirname, 'app')));
 
@@ -9,7 +7,8 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const db = require("./models");
+const db = require("./models/index.js");
+// const post = require("./models/post");
 
 // Set Handlebars as the default templating engine.
 
@@ -17,10 +16,12 @@ const db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
-
+app.get("/", (req, res) => {
+  // res.send("hello world");
+  db.post.findAll().then(data => {
+    res.json(data)
+  })
+})
 
 // Turn on that server!
 app.listen(PORT, () => {
