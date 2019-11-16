@@ -18,9 +18,17 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   // res.send("hello world");
-  db.post.findAll().then(data => {
-    res.json(data)
-  })
+    db.post
+      .findAll({
+        include: [db.user]
+      })
+      .then(data => {
+        res.json(data);
+      })
+      .catch(err => {
+        console.log(err);
+        throw err;
+      });
 })
 
 // Turn on that server!
