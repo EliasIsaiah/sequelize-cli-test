@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   // res.send("hello world");
     db.post
       .findAll({
-        include: [db.user]
+        include: [db.user, db.restaurant]
       })
       .then(data => {
         res.json(data);
@@ -32,6 +32,8 @@ app.get("/", (req, res) => {
 })
 
 // Turn on that server!
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+db.sequelize.sync().then(()=>{
+  app.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}`);
+  });
+})
